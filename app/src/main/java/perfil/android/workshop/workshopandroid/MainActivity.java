@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public static final String EXTRA_PHONE = "com.example.myfirstapp.PHONE";
     public static final String EXTRA_ADDRESS = "com.example.myfirstapp.ADDRESS";
     public static final String EXTRA_EMAIL = "com.example.myfirstapp.EMAIL";
+    public static final String EXTRA_IMAGE = "com.example.myfirstapp.IMAGE";
     LinkedList<String> companies;
 
 
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        populate();
+
     }
 
 
@@ -42,22 +43,42 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         EditText editTextAddress = findViewById(R.id.editTextAddress);
         EditText editTextEmail = findViewById(R.id.editTextEmail);
 
+
+        Spinner spinner = findViewById(R.id.spinner);
+        String selectedCompany = (String) spinner.getSelectedItem();
+
         // Get dados
         String name = editTextName.getText().toString();
         String phone = editTextPhone.getText().toString();
         String address = editTextAddress.getText().toString();
         String email = editTextEmail.getText().toString();
+        String company = "";
+
+        switch(selectedCompany) {
+            case "Worten":
+                company = "worten";
+                break;
+            case "Vodafone":
+                company = "vodafone";
+                break;
+            case "Fnac":
+                company = "fnac";
+                break;
+            case "Continente":
+                company = "continente";
+                break;
+        }
 
         // Send to Intent
         intent.putExtra(EXTRA_NAME, name).putExtra(EXTRA_PHONE, phone)
-                .putExtra(EXTRA_ADDRESS, address).putExtra(EXTRA_EMAIL, email);
+                .putExtra(EXTRA_ADDRESS, address).putExtra(EXTRA_EMAIL, email)
+                .putExtra(EXTRA_IMAGE, company);
         startActivity(intent);
 
     }
 
 
     public void populateSpinner(View view) {
-        populate();
         Spinner spinner = findViewById(R.id.spinner);
 
 
@@ -71,39 +92,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 android.R.layout.simple_spinner_item, companies);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(dataAdapter);
-
-
-        String selectedCompany = (String) spinner.getSelectedItem();
-
-        ImageView imageView = findViewById(R.id.imageView);
-
-
-        spinner.setOnItemSelectedListener(this);
-
-        switch(selectedCompany) {
-            case "WORTEN":
-                imageView.setImageResource(R.mipmap.ic_launcher_fnac);
-            case "VODAFONE":
-
-            case "FNAC":
-
-            case "CONTINENTE":
-
-        }
-
-
-
     }
 
 
 
-    public void populate(){
-        this.companies = new LinkedList<>();
-        companies.add("WORTEN");
-        companies.add("VODAFONE");
-        companies.add("FNAC");
-        companies.add("CONTINENTE");
-    }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

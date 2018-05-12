@@ -3,6 +3,7 @@ package perfil.android.workshop.workshopandroid;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class DisplayMessageActivity extends AppCompatActivity {
@@ -29,6 +30,19 @@ public class DisplayMessageActivity extends AppCompatActivity {
         textViewAddress.setText(address);
         TextView textViewEmail = findViewById(R.id.textViewEmail);
         textViewEmail.setText(email);
+
+
+        ImageView imageView = findViewById(R.id.imageViewCompany);
+
+        String image = intent.getStringExtra(MainActivity.EXTRA_IMAGE);
+        if (image.equals("fnac"))
+            imageView.setImageResource(R.mipmap.ic_launcher_fnac);
+        else if (image.equals("continente"))
+            imageView.setImageResource(R.mipmap.ic_launcher_continente);
+        else if (image.equals("worten"))
+            imageView.setImageResource(R.mipmap.ic_launcher_worten);
+        else if (image.equals("vodafone"))
+            imageView.setImageResource(R.mipmap.ic_launcher_vodafone);
 
     }
 }

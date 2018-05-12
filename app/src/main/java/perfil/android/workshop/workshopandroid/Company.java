@@ -1,6 +1,6 @@
 package perfil.android.workshop.workshopandroid;
 
-public class Companhia {
+public class Company {
 
     private String nome;
     private String telefone;
@@ -9,7 +9,7 @@ public class Companhia {
     private String path;
 
 
-    public Companhia(String nome, String telefone, String email, String morada, String path) {
+    public Company(String nome, String telefone, String email, String morada, String path) {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
