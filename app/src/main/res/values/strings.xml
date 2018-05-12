@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">WorkShop Android</string>
+
+    <string-array name="companies">
+        <item>Vodafone</item>
+        <item>Fnac</item>
+        <item>Worten</item>
+        <item>Continente</item>
+    </string-array>
+</resources>
