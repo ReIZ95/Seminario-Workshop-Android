@@ -13,9 +13,9 @@ import android.widget.Spinner;
 import java.util.LinkedList;
 
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
 
-    public static final String EXTRA_NAME = "com.example.myfirstapp.MESSAGE";
+    public static final String EXTRA_NAME = "com.example.myfirstapp.NAME";
     public static final String EXTRA_PHONE = "com.example.myfirstapp.PHONE";
     public static final String EXTRA_ADDRESS = "com.example.myfirstapp.ADDRESS";
     public static final String EXTRA_EMAIL = "com.example.myfirstapp.EMAIL";
@@ -38,12 +38,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Intent intent = new Intent(this, DisplayMessageActivity.class);
 
         // Get editText
-        EditText editTextName = (EditText) findViewById(R.id.editTextName);
+        EditText editTextName = findViewById(R.id.editTextName);
         EditText editTextPhone = findViewById(R.id.editTextPhone);
         EditText editTextAddress = findViewById(R.id.editTextAddress);
         EditText editTextEmail = findViewById(R.id.editTextEmail);
 
-
+        // Get selected company
         Spinner spinner = findViewById(R.id.spinner);
         String selectedCompany = (String) spinner.getSelectedItem();
 
@@ -52,27 +52,27 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         String phone = editTextPhone.getText().toString();
         String address = editTextAddress.getText().toString();
         String email = editTextEmail.getText().toString();
-        String company = "";
+        String companyName = "";
 
         switch(selectedCompany) {
             case "Worten":
-                company = "worten";
+                companyName = "worten";
                 break;
             case "Vodafone":
-                company = "vodafone";
+                companyName = "vodafone";
                 break;
             case "Fnac":
-                company = "fnac";
+                companyName = "fnac";
                 break;
             case "Continente":
-                company = "continente";
+                companyName = "continente";
                 break;
         }
 
-        // Send to Intent
+        // Send to Intent, cannot send an Object :)
         intent.putExtra(EXTRA_NAME, name).putExtra(EXTRA_PHONE, phone)
                 .putExtra(EXTRA_ADDRESS, address).putExtra(EXTRA_EMAIL, email)
-                .putExtra(EXTRA_IMAGE, company);
+                .putExtra(EXTRA_IMAGE, companyName);
         startActivity(intent);
 
     }
@@ -97,18 +97,4 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
 
 
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
-
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
-    }
 }

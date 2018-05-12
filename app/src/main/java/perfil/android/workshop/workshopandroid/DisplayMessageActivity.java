@@ -35,6 +35,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.imageViewCompany);
 
         String image = intent.getStringExtra(MainActivity.EXTRA_IMAGE);
+
         if (image.equals("fnac"))
             imageView.setImageResource(R.mipmap.ic_launcher_fnac);
         else if (image.equals("continente"))

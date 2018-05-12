@@ -17,6 +17,10 @@ public class Company {
         this.path = path;
     }
 
+    public Company (String path){
+        this.path = path;
+    }
+
 
     public String getNome() {
         return nome;
@@ -50,8 +54,8 @@ public class Company {
         this.morada = morada;
     }
 
-    public String getPath() {
-        return path;
+    public String getPath(String path) {
+        return "";
     }
 
     public void setPath(String path) {
